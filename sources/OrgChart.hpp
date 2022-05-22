@@ -9,6 +9,10 @@ namespace ariel{
         Node* find(const std::string& to_find);
         std::string &add_str(std::string &str);
         unsigned int size() const{return data.length();}
+        [[nodiscard]] int length() const{return data.length();}
+        char at(unsigned int i){
+            return data.at(i);
+        }
         //friend std::ostream& operator <<(std::ostream &stream,const Node& n);
     };
     class level_order_it{
@@ -18,7 +22,7 @@ namespace ariel{
          int ind=0;
         explicit level_order_it(Node *start);
         level_order_it &operator++();
-        const level_order_it operator++(int index);
+        level_order_it operator++(int index);
         level_order_it &operator+( int size){ind=ind+size;
             return *this;}
         std::string &operator*();
@@ -36,7 +40,7 @@ namespace ariel{
         int ind=-1;
         explicit reverse_level_order_it(Node *start);
         reverse_level_order_it &operator++();
-        const reverse_level_order_it operator++(int index);
+        reverse_level_order_it operator++(int index);
         reverse_level_order_it &operator+( int size){ind=ind+size;
             return *this;}
         std::string &operator*();
@@ -52,7 +56,7 @@ namespace ariel{
         int ind=0;
         explicit pre_level_order_it(Node *start);
         pre_level_order_it &operator++();
-        const pre_level_order_it operator++(int index);
+        pre_level_order_it operator++(int index);
         pre_level_order_it &operator+( int size){ind=ind+size;
             return *this;}
         std::string &operator*();
@@ -69,7 +73,7 @@ namespace ariel{
          int ind=0;
         explicit regular_order_it(Node *start);
         regular_order_it &operator++();
-        const regular_order_it operator++(int index);
+        regular_order_it operator++(int index);
         regular_order_it &operator+( int size){ind=ind+size;
             return *this;}
         std::string &operator*();
@@ -127,6 +131,8 @@ namespace ariel{
                 throw std::runtime_error("chart is empty");
             }
             return pre_level_order_it(head)+(size);}
+        regular_order_it begin_del(){
+            return regular_order_it(head);}
         ~OrgChart();
     };
 //    std::ostream& ariel::operator<<(std::ostream& stream , const ariel::Node& n ){stream <<n.data;return stream;};

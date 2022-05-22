@@ -118,7 +118,7 @@ std::ostream &ariel::operator<<(std::ostream &stream, const ariel::OrgChart &cha
 
 ariel::OrgChart::~OrgChart() {
     if(head!= nullptr) {
-        std::vector<Node *> vec = begin().it;
+        std::vector<Node *> vec = begin_del().it;
         for (Node *n: vec) {
             delete n;
         }
@@ -157,7 +157,7 @@ ariel::level_order_it &ariel::level_order_it::operator++() {
  * @param index
  * @return
  */
-const ariel::level_order_it ariel::level_order_it::operator++(int index) {
+ariel::level_order_it ariel::level_order_it::operator++(int index) {
     ind++;
     return level_order_it(head)+(ind-1);
 }
@@ -208,7 +208,7 @@ ariel::reverse_level_order_it & ariel::reverse_level_order_it::operator++() {
  * @param index
  * @return
  */
-const ariel::reverse_level_order_it ariel::reverse_level_order_it::operator++(int index) {
+ariel::reverse_level_order_it ariel::reverse_level_order_it::operator++(int index) {
     ind--;
     return reverse_level_order_it(head)+(ind+1);
 }
@@ -249,7 +249,7 @@ ariel::pre_level_order_it & ariel::pre_level_order_it::operator++() {
  * @param index
  * @return
  */
-const ariel::pre_level_order_it ariel::pre_level_order_it::operator++(int index) {
+ariel::pre_level_order_it ariel::pre_level_order_it::operator++(int index) {
     ind++;
     return pre_level_order_it(head)+(ind-1);
 }
@@ -293,7 +293,7 @@ ariel::regular_order_it & ariel::regular_order_it::operator++() {
  * @param index
  * @return
  */
-const ariel::regular_order_it ariel::regular_order_it::operator++(int index) {
+ariel::regular_order_it ariel::regular_order_it::operator++(int index) {
     ind++;
     return regular_order_it(head)+(ind-1);
 }
