@@ -69,14 +69,17 @@ std::string& ariel::Node::add_str(std::string &str) {
  * @return
  */
 ariel::OrgChart &ariel::OrgChart::add_root(const std::string& add) {
-    if(head== nullptr){
+   if( add.length()==0){
+	   throw std::runtime_error("not valid");
+   }
+   if(head== nullptr){
         head = new Node();
         head->data=add;
         size++;
     }
-    else{
+    
         head->data=add;
-    }
+    
     return *this;
 }
 
@@ -87,6 +90,9 @@ ariel::OrgChart &ariel::OrgChart::add_root(const std::string& add) {
  * @return
  */
 ariel::OrgChart &ariel::OrgChart::add_sub(const std::string &father, const std::string &child) {
+    if(child.length()==0){
+	    throw std::runtime_error("not valid");
+    }
     if(head == nullptr){
         throw std::runtime_error("employer doesn't exist");
     }
